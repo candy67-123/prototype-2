@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float xRange = 10;
-    public float horzontalInput;
+    public float horizontalInput;
     public float speed = 10.0f;
     // Start is called before the first frame update
     void Start()
@@ -17,9 +17,16 @@ public class PlayerController : MonoBehaviour
     void Update()
     {   
         // Keep the player in bounds
-        if (transform.position.x < - xRange) { transform.position = new Vector3(xRange, transform.position.y, transform.position.z); }
-        horzontalInput = Input.GetAxis("horzontal");
-        if (transform.position.x > -xRange)
-            transform.Translate(Vector3.right * horzontalInput * Time.deltaTime * speed);
+        if (transform.position.x < - xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        }
+
+        if (transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        }
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
     }
 }
