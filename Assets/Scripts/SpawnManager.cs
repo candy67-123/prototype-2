@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 
 {
     public GameObject[] animalPerfabs;
-    public int animalIndex;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,8 @@ public class SpawnManager : MonoBehaviour
     {
        if (Input.GetKeyDown(KeyCode.S))
         {
+            int animalIndex = Random.Range(0, animalPerfabs.Length);
+
             Instantiate(animalPerfabs[animalIndex], new Vector3(0, 0, 20), animalPerfabs[animalIndex].transform.rotation);
         }
 
